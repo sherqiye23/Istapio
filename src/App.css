@@ -3,7 +3,11 @@
   margin: 0;
   box-sizing: border-box;
   background: transparent;
-  border: none;
   outline: none;
   text-decoration: none;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text);
 }

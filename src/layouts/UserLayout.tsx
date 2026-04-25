@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router'
-import UserNavbar from '../pages/User/UserNavbar'
-import UserFooter from '../pages/User/UserFooter'
+import UserNavbar from '../components/User/UserNavbar'
+import UserFooter from '../components/User/UserFooter'
 
 export default function UserLayout() {
     return (
