@@ -1,5 +1,10 @@
+import { useNavigate } from "react-router";
+
 export default function UserFooter() {
+  const navigate = useNavigate();
   return (
-    <div className='p-2 bg-pink-300'>UserFooter</div>
+    <div className='px-2 py-3 text-center bg-[var(--primary-bg)]'>
+      ©2026 <strong className="cursor-pointer" onClick={() => navigate('/')}>Istapio</strong>. High-end career facilitator for the modern workforce.
+    </div>
   )
 }
