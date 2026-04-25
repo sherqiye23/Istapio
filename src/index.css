@@ -1,0 +1,16 @@
+:root {
+  --text: #191B23;
+  --text-h: #08060d;
+  --primary-color: #004AC6;
+  --bg: #fff;
+  /* --border: #e5e4e7;
+  --code-bg: #F5F7FF;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5); */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
