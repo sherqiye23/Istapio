@@ -1,5 +1,5 @@
-export default function JobsPage() {
+export default function VacanciesPage() {
   return (
-    <div>JobsPage</div>
+    <div>VacanciesPage</div>
   )
 }

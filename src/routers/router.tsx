@@ -6,7 +6,7 @@ import SignupPage from "../pages/Signup";
 import AboutPage from "../pages/User/About";
 import CompaniesPage from "../pages/User/Companies";
 import Home from "../pages/User/Home";
-import JobsPage from "../pages/User/Jobs";
+import VacanciesPage from "../pages/User/Jobs";
 import NotFound from "../pages/User/NotFound";
 import Profile from "../pages/User/Profile";
 
@@ -25,8 +25,8 @@ const ROUTES = [
                 element: <Profile />
             },
             {
-                path: "/jobs",
-                element: <JobsPage />
+                path: "/vacancies",
+                element: <VacanciesPage />
             },
             {
                 path: "/companies",

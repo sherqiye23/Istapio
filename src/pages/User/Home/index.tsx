@@ -1,5 +1,13 @@
+import CategorySection from "../../../components/User/Home/CategorySection";
+import Hero from "../../../components/User/Home/Hero";
+import JobSection from "../../../components/User/Home/JobSection";
+
 export default function Home() {
   return (
-    <div className="bg-pink-500">Home</div>
+    <>
+      <Hero />
+      <CategorySection />
+      <JobSection />
+    </>
   )
 }

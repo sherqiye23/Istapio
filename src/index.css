@@ -1,7 +1,10 @@
 :root {
   --text: #191B23;
   --primary-color: #2563EB;
-  --primary-bg: #F7F8FF;
+  --primary-bg: #FEFEFF;
+  --secondary-bg: #FAF8FF;
+  --site-width: 1300px;
+  
   /* --border: #e5e4e7;
   --code-bg: #F5F7FF;
   --accent: #aa3bff;
