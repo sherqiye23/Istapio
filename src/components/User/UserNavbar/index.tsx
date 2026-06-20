@@ -31,7 +31,7 @@ export default function UserNavbar() {
           <nav className="flex gap-3">
             {
               links.map((link: Link) =>
-                <NavLink
+                <NavLink key={link.name}
                   to={link.path}
                   className={({ isActive }) =>
                     isActive

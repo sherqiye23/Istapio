@@ -1,4 +1,11 @@
+import { useGetCategoriesQuery } from "../../../rtk/sciles/CategoriesSlice";
+import type { Category } from "../../../types/dbtypes";
+
 export default function AboutPage() {
+
+    const { data }: { data: Category[] } = useGetCategoriesQuery();
+    console.log(data);
+
     return (
         <div className="max-w-3xl mx-auto px-6 py-16 font-sans text-center space-y-6">
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">About Istapio</h1>
