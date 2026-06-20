@@ -1,14 +1,22 @@
-import AdminLayout from "../layouts/AdminLayout";
 import UserLayout from "../layouts/UserLayout";
-import AdminDashboard from "../pages/Admin/Dashboard";
 import LoginPage from "../pages/Login";
 import SignupPage from "../pages/Signup";
 import AboutPage from "../pages/User/About";
 import CompaniesPage from "../pages/User/Companies";
+import CompanyDetailPage from "../pages/User/Companies/CompanyDetailPage";
 import Home from "../pages/User/Home";
 import VacanciesPage from "../pages/User/Jobs";
+import VacancyDetailPage from "../pages/User/Jobs/VacancyDetailPage";
 import NotFound from "../pages/User/NotFound";
 import Profile from "../pages/User/Profile";
+
+// admin
+import AdminLayout from "../layouts/AdminLayout";
+import AdminDashboard from "../pages/Admin/Dashboard";
+import AdminJobsPage from "../pages/Admin/Jobs";
+import AdminCompaniesPage from "../pages/Admin/Companies";
+import AdminUsersPage from "../pages/Admin/Users";
+import AdminSettingsPage from "../pages/Admin/Settings";
 
 const ROUTES = [
     // user routes
@@ -29,8 +37,16 @@ const ROUTES = [
                 element: <VacanciesPage />
             },
             {
+                path: "/vacancies/:vacancyName",
+                element: <VacancyDetailPage />
+            },
+            {
                 path: "/companies",
                 element: <CompaniesPage />
+            },
+            {
+                path: "/companies/:companyName",
+                element: <CompanyDetailPage />
             },
             {
                 path: "/about",
@@ -48,8 +64,24 @@ const ROUTES = [
         element: <AdminLayout />,
         children: [
             {
-                path: "/admin",
+                index: true, // handles /admin
                 element: <AdminDashboard />
+            },
+            {
+                path: "jobs", // /admin/jobs
+                element: <AdminJobsPage />
+            },
+            {
+                path: "companies", // /admin/companies
+                element: <AdminCompaniesPage />
+            },
+            {
+                path: "users", // /admin/users
+                element: <AdminUsersPage />
+            },
+            {
+                path: "settings", // /admin/settings
+                element: <AdminSettingsPage />
             }
         ]
     },
