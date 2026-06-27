@@ -1,9 +1,9 @@
 import { useGetCategoriesQuery } from "../../../rtk/sciles/CategoriesSlice";
-import type { Category } from "../../../types/dbtypes";
+import type { GetCategoryDto } from "../../../types/category.types";
 
 export default function AboutPage() {
 
-    const { data }: { data: Category[] } = useGetCategoriesQuery();
+    const { data }: { data: GetCategoryDto[] } = useGetCategoriesQuery();
     console.log(data);
 
     return (

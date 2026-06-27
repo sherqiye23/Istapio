@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Category } from '../../types/dbtypes'
 import apiUrls from '../../assets/ts/apiLinks'
+import type { CreateCategoryRequest, CreateCategoryResponse, GetCategoryDto, UpdateCategoryRequest, UpdateCategoryResponse } from '../../types/category.types';
 
 export const categoriesApi = createApi({
   reducerPath: 'categoriesApi',
   baseQuery: fetchBaseQuery({ baseUrl: apiUrls.categories }),
   endpoints: (builder) => ({
-    getCategories: builder.query<Category[], void>({
+    getCategories: builder.query<GetCategoryDto[], void>({
       query: () => ``,
     }),
-    getCategoryById: builder.query<Category, string>({
+    getCategoryById: builder.query<GetCategoryDto, string>({
       query: (id) => `${id}`,
     }),
     deleteCategory: builder.mutation({
@@ -18,18 +18,18 @@ export const categoriesApi = createApi({
         method: 'DELETE',
       }),
     }),
-    postCategory: builder.mutation<Category, {name: string; parentId?: string}>({
-      query: (newCategory) => ({
+    postCategory: builder.mutation<CreateCategoryResponse, CreateCategoryRequest>({
+      query: (newCategory: CreateCategoryRequest) => ({
         url: ``,
         method: 'POST',
         body: newCategory,
       }),
     }),
-    putCategory: builder.mutation<Category, { id: string; putBody: { name?: string; parentId?: string } }>({
-      query: ({ id, putBody }) => ({
-        url: `${id}`,
+    putCategory: builder.mutation<UpdateCategoryResponse, UpdateCategoryRequest>({
+      query: (body: UpdateCategoryRequest) => ({
+        url: `${body.id}`,
         method: 'PUT',
-        body: putBody,
+        body
       }),
     }),
   }),
