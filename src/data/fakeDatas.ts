@@ -131,7 +131,6 @@ export const fakeCategories: GetCategoryDetailsDto[] = [
     },
 ];
 
-
 export const fakeJobs: GetJobPostDto[] = [
     {
         id: "1",
@@ -269,3 +268,5 @@ export const fakeCompanies: GetCompanyDto[] = [
         userName: "adobe_admin",
     },
 ];
+
+// commit for deployment
