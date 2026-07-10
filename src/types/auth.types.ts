@@ -8,3 +8,8 @@ export interface AuthResponse {
     lastName: string | null,
     roles: string[] | null
 }
+
+export interface ForgotPasswordRequest {
+    email: string
+}
+

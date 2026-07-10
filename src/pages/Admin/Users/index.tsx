@@ -1,5 +1,3 @@
-import React from 'react';
-
 const MOCK_USERS = [
     { id: 'u1', name: 'Alex Rivera', email: 'alex@istapio.com', created: '2026-05-12', lastLoginIp: '192.168.1.45' },
     { id: 'u2', name: 'Sophia Chen', email: 'sophia@design.io', created: '2026-06-02', lastLoginIp: '172.56.21.9' },
