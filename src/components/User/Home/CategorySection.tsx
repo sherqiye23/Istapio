@@ -1,40 +1,46 @@
 import { MdArrowRightAlt } from "react-icons/md";
-import type { CategoryType } from "../../../types/homePageTypes";
-import { FaChevronLeft, FaChevronRight, FaPaintBrush } from "react-icons/fa";
-import { IoBarChart } from "react-icons/io5";
-import { FaArrowTrendUp } from "react-icons/fa6";
+import type { GetCategoryDetailsDto } from "../../../types/category.types";
+import { NavLink } from "react-router";
+// import { useGetCategoriesQuery } from "../../../redux/api/categoryApi";
 
 export default function CategorySection() {
 
-    const categories: CategoryType[] = [
+    // const { data: categories = [], isLoading } = useGetCategoriesQuery();
+
+    const categories: GetCategoryDetailsDto[] = [
         {
-            color: 'bg-blue-200',
-            icon: <>
-                <FaChevronLeft />
-                <FaChevronRight />
-            </>,
-            name: 'Development',
-            desc: '1240 open positions'
+            id: "1",
+            name: "Development",
+            jobPostsCount: 1240,
+            parentId: null,
+            subCategories: null,
+            jobPosts: null,
         },
         {
-            color: 'bg-purple-200',
-            icon: <FaPaintBrush />,
-            name: 'Design',
-            desc: '840 open positions'
+            id: "2",
+            name: "Design",
+            jobPostsCount: 840,
+            parentId: null,
+            subCategories: null,
+            jobPosts: null,
         },
         {
-            color: 'bg-orange-200',
-            icon: <FaArrowTrendUp />,
-            name: 'Marketing',
-            desc: '620 open positions'
+            id: "3",
+            name: "Marketing",
+            jobPostsCount: 620,
+            parentId: null,
+            subCategories: null,
+            jobPosts: null,
         },
         {
-            color: 'bg-green-200',
-            icon: <IoBarChart />,
-            name: 'Finance',
-            desc: '430 open positions'
-        }
-    ]
+            id: "4",
+            name: "Finance",
+            jobPostsCount: 430,
+            parentId: null,
+            subCategories: null,
+            jobPosts: null,
+        },
+    ];
 
     return (
         <div className="bg-[var(--secondary-bg)]">
@@ -42,14 +48,29 @@ export default function CategorySection() {
                 <div className="font-bold text-3xl">Browse by category</div>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center my-3">
                     <p>Explore opportunities across specialized industries</p>
-                    <button className="font-bold text-[var(--primary-color)] flex gap-1 items-center">All categories <MdArrowRightAlt /></button>
+                    <NavLink to="/categories" className="mt-3 sm:mt-0">
+                        <button className="font-bold text-[var(--primary-color)] flex gap-1 items-center">All categories <MdArrowRightAlt /></button>
+                    </NavLink>
                 </div>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-5">
-                    {categories.map((category, index) => (
-                        <div key={index} className={`rounded-3xl bg-white p-5 flex flex-col gap-2`}>
-                            <div className={`${category.color} text-[var(--text)] p-3 rounded-xl h-[45px] w-[45px] flex items-center justify-center text-sm`}>{category.icon}</div>
-                            <div className="font-bold text-xl">{category.name}</div>
-                            <div>{category.desc}</div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    {categories.map((category) => (
+                        <div
+                            key={category.id}
+                            className="rounded-3xl bg-white border border-emerald-100 hover:border-emerald-300 hover:shadow-md transition-all duration-300 p-6"
+                        >
+                            <span className="inline-flex items-center rounded-full bg-emerald-100 text-emerald-700 px-3 py-1 text-sm font-semibold">
+                                {category.name}
+                            </span>
+
+                            <div className="mt-6">
+                                <h3 className="text-3xl font-bold text-[var(--text)]">
+                                    {category.jobPostsCount}
+                                </h3>
+
+                                <p className="mt-1 text-gray-500">
+                                    Open positions
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>

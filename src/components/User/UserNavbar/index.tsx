@@ -4,8 +4,8 @@ import type { Link } from "../../../types/navbarTypes";
 export default function UserNavbar() {
   const links: Link[] = [
     {
-      name: "Vacancies",
-      path: '/vacancies'
+      name: "Jobs",
+      path: '/jobs'
     },
     {
       name: "Companies",

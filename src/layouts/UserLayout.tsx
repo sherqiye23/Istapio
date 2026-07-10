@@ -5,9 +5,11 @@ import UserFooter from '../components/User/UserFooter'
 export default function UserLayout() {
     return (
         <>
-            <UserNavbar/>
-            <Outlet />
-            <UserFooter/>
+            <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
+                <UserNavbar />
+                <Outlet />
+                <UserFooter />
+            </div>
         </>
     )
 }

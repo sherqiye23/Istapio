@@ -17,7 +17,7 @@ export interface GetCompanyJobPostDto {
     viewCount: number
 }
 
-export interface GetCategoryDetailsDto {
+export interface GetCompanyDetailsDto {
     id: string;
     createdAt: string;
     createdBy: string | null;

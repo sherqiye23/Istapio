@@ -5,10 +5,12 @@ import AboutPage from "../pages/User/About";
 import CompaniesPage from "../pages/User/Companies";
 import CompanyDetailPage from "../pages/User/Companies/CompanyDetailPage";
 import Home from "../pages/User/Home";
-import VacanciesPage from "../pages/User/Jobs";
-import VacancyDetailPage from "../pages/User/Jobs/VacancyDetailPage";
 import NotFound from "../pages/User/NotFound";
 import Profile from "../pages/User/Profile";
+import CategoriesPage from "../pages/User/Categories";
+import CategoryDetailPage from "../pages/User/Categories/CategoryDetailPage";
+import JobsPage from "../pages/User/Jobs";
+import JobDetailPage from "../pages/User/Jobs/JobDetailPage";
 
 // admin
 import AdminLayout from "../layouts/AdminLayout";
@@ -17,6 +19,7 @@ import AdminJobsPage from "../pages/Admin/Jobs";
 import AdminCompaniesPage from "../pages/Admin/Companies";
 import AdminUsersPage from "../pages/Admin/Users";
 import AdminSettingsPage from "../pages/Admin/Settings";
+
 
 const ROUTES = [
     // user routes
@@ -33,12 +36,12 @@ const ROUTES = [
                 element: <Profile />
             },
             {
-                path: "/vacancies",
-                element: <VacanciesPage />
+                path: "/jobs",
+                element: <JobsPage />
             },
             {
-                path: "/vacancies/:vacancyName",
-                element: <VacancyDetailPage />
+                path: "/jobs/:jobTitle",
+                element: <JobDetailPage />
             },
             {
                 path: "/companies",
@@ -47,6 +50,14 @@ const ROUTES = [
             {
                 path: "/companies/:companyName",
                 element: <CompanyDetailPage />
+            },
+            {
+                path: "/categories",
+                element: <CategoriesPage />
+            },
+            {
+                path: "/categories/:categoryName",
+                element: <CategoryDetailPage />
             },
             {
                 path: "/about",
