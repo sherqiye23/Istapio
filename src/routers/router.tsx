@@ -19,6 +19,9 @@ import AdminJobsPage from "../pages/Admin/Jobs";
 import AdminCompaniesPage from "../pages/Admin/Companies";
 import AdminUsersPage from "../pages/Admin/Users";
 import AdminSettingsPage from "../pages/Admin/Settings";
+import AdminCategoriesPage from "../pages/Admin/Categories";
+import AdminVacationTypesPage from "../pages/Admin/Vacation Types";
+import AdminSkillsPage from "../pages/Admin/Skills";
 
 
 const ROUTES = [
@@ -79,12 +82,24 @@ const ROUTES = [
                 element: <AdminDashboard />
             },
             {
-                path: "jobs", // /admin/jobs
-                element: <AdminJobsPage />
+                path: "categories", // /admin/categories
+                element: <AdminCategoriesPage />
             },
             {
                 path: "companies", // /admin/companies
                 element: <AdminCompaniesPage />
+            },
+            {
+                path: "jobs", // /admin/jobs
+                element: <AdminJobsPage />
+            },
+            {
+                path: "vacation-types", // /admin/vacation-types
+                element: <AdminVacationTypesPage />
+            },
+            {
+                path: "skills", // /admin/skills
+                element: <AdminSkillsPage />
             },
             {
                 path: "users", // /admin/users
