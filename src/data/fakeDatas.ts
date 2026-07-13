@@ -1,6 +1,9 @@
+import type { UserType } from "../types/auth.types";
 import type { GetCategoryDetailsDto } from "../types/category.types";
 import type { GetCompanyDto } from "../types/company.types";
 import type { GetJobPostDto } from "../types/jobPost.types";
+import type { GetSettingDto } from "../types/setting.types";
+import type { GetSkillDto } from "../types/skill.types";
 
 export const fakeCategories: GetCategoryDetailsDto[] = [
     {
@@ -130,6 +133,21 @@ export const fakeCategories: GetCategoryDetailsDto[] = [
         ],
     },
 ];
+
+export const fakeSkills: GetSkillDto[] = [
+    {
+        id: "1",
+        name: 'paytin'
+    },
+    {
+        id: "2",
+        name: 'java'
+    },
+    {
+        id: "3",
+        name: 'ci/cd'
+    },
+]
 
 export const fakeJobs: GetJobPostDto[] = [
     {
@@ -268,5 +286,36 @@ export const fakeCompanies: GetCompanyDto[] = [
         userName: "adobe_admin",
     },
 ];
+
+export const fakeSettings: GetSettingDto[] = [
+    {
+        id: "1",
+        key: "filansey",
+        value: "fesmansey",
+        createdAt: "13-07-2026",
+        createdBy: "admin",
+        updatedAt: null,
+        updatedBy: null
+    },
+    {
+        id: "2",
+        key: "filansey2",
+        value: "fesmansey2",
+        createdAt: "13-07-2026",
+        createdBy: "superadmin",
+        updatedAt: "13-07-2026",
+        updatedBy: "admin"
+    }
+]
+
+export const fakeUsers: UserType[] = [
+    {
+        userId: "string",
+        email: "string",
+        firstName: "string",
+        lastName: "string",
+        roles: ["admin", "moderator"]
+    }
+]
 
 // commit for deployment
