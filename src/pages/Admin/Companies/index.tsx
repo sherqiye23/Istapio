@@ -1,72 +1,112 @@
-import { useState } from 'react';
-
-const MOCK_COMPANIES = [
-    { id: 'c1', name: 'TechCorp International', description: 'Global software solutions provider.', logoUrl: '🏢', isDeleted: false, userCreator: 'Alex Rivera' },
-    { id: 'c2', name: 'DesignStudio Agency', description: 'Creative interface layout studio.', logoUrl: '🎨', isDeleted: false, userCreator: 'Sophia Chen' },
-    { id: 'c3', name: 'CloudScale Infrastructure', description: 'High availability hosting architectures.', logoUrl: '☁️', isDeleted: false, userCreator: 'Marcus Vance' },
-    { id: 'c4', name: 'Legacy Systems Inc.', description: 'Outdated platform migrations.', logoUrl: '📟', isDeleted: true, userCreator: 'John Doe' },
-];
+import { useMemo, useState } from 'react';
+import { fakeCompanies } from '../../../data/fakeDatas';
+import type { GetCompanyDto } from '../../../types/company.types';
+import AdminPageHeader from '../../../components/Admin/AdminPageHeader';
+import AdminTable from '../../../components/Admin/AdminTable';
+import TableActions from '../../../components/Admin/TableActions';
 
 export default function AdminCompaniesPage() {
-    const [companies, setCompanies] = useState(MOCK_COMPANIES);
+    const [search, setSearch] = useState("");
 
-    const toggleSoftDelete = (id: string) => {
-        setCompanies(companies.map(company => 
-            company.id === id ? { ...company, isDeleted: !company.isDeleted } : company
-        ));
+    const tableTitles = ["Name", "Username", "Logo"];
+
+    const filteredCompanies = useMemo(() => {
+        return fakeCompanies.filter((company) =>
+            `${company.name} ${company.userName} ${company.logoUrl}`
+                .toLowerCase()
+                .includes(search.toLowerCase())
+        );
+    }, [search]);
+
+    const handleAdd = () => {
+        console.log("Open Create Company Modal");
+    };
+
+    const handleEdit = (company: GetCompanyDto) => {
+        console.log("Edit", company);
+    };
+
+    const handleDelete = (company: GetCompanyDto) => {
+        console.log("Delete", company);
     };
 
     return (
-        <div className="space-y-6">
-            <div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900">Registered Corporate Profiles</h2>
-                <p className="text-sm text-slate-500">Manage verified employer listings and filter out restricted entities.</p>
-            </div>
+        <div>
 
-            {/* Layout Grid Split */}
-            <div className="grid grid-cols-1 gap-4">
-                {companies.map((company) => (
-                    <div 
-                        key={company.id} 
-                        className={`p-5 bg-white border rounded-2xl shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-all ${
-                            company.isDeleted ? 'opacity-60 bg-slate-50 border-slate-200' : 'border-slate-200'
-                        }`}
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center text-xl">
-                                {company.logoUrl}
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-2">
-                                    <h4 className={`font-semibold ${company.isDeleted ? 'line-through text-slate-500' : 'text-slate-900'}`}>
-                                        {company.name}
-                                    </h4>
-                                    {company.isDeleted && (
-                                        <span className="bg-red-50 text-red-700 font-medium text-[10px] px-2 py-0.5 rounded-md">
-                                            Soft-Deleted
-                                        </span>
-                                    )}
-                                </div>
-                                <p className="text-xs text-slate-500 mt-0.5">{company.description}</p>
-                                <p className="text-[11px] text-slate-400 mt-1">Created By: <span className="font-medium text-slate-600">{company.userCreator}</span></p>
-                            </div>
-                        </div>
+            <AdminPageHeader
+                title="Companies"
+                buttonText="Add Company"
+                search={search}
+                setSearch={setSearch}
+                onAdd={handleAdd}
+            />
 
-                        <div>
-                            <button
-                                onClick={() => toggleSoftDelete(company.id)}
-                                className={`text-xs font-semibold px-4 py-2 rounded-xl transition-all ${
-                                    company.isDeleted
-                                        ? 'bg-slate-200 hover:bg-slate-300 text-slate-700'
-                                        : 'bg-rose-50 hover:bg-rose-100 text-rose-600'
-                                }`}
+            <AdminTable>
+
+                <thead className="bg-gray-50">
+                    <tr>
+                        {
+                            tableTitles.map((title, i) => (
+                                <th key={i} className="px-6 py-4 text-left text-sm font-semibold">
+                                    {title}
+                                </th>
+                            ))
+                        }
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {filteredCompanies.map((company) => (
+
+                        <tr
+                            key={company.id}
+                            className="border-t border-gray-100 hover:bg-gray-50 transition"
+                        >
+
+                            <td className="px-6 py-5 font-medium">
+                                {company.name}
+                            </td>
+
+                            <td className="px-6 py-5">
+                                {company.userName}
+                            </td>
+
+                            <td className="px-6 py-5">
+                                {company.logoUrl ? (
+                                    <img className='w-10 h-10' src={company.logoUrl} alt="logo" />
+                                ) : "NO"}
+                            </td>
+
+                            <td className="px-6 py-5">
+                                <TableActions
+                                    item={company}
+                                    onEdit={handleEdit}
+                                    onDelete={handleDelete}
+                                />
+                            </td>
+
+                        </tr>
+
+                    ))}
+
+                    {!filteredCompanies.length && (
+                        <tr>
+
+                            <td
+                                colSpan={8}
+                                className="py-12 text-center text-gray-500"
                             >
-                                {company.isDeleted ? 'Restore Profile' : 'Flag / Delete'}
-                            </button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                                No companies found.
+                            </td>
+
+                        </tr>
+                    )}
+
+                </tbody>
+
+            </AdminTable>
+
         </div>
     );
 }

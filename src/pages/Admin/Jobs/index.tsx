@@ -11,6 +11,8 @@ import type { GetJobPostDto } from "../../../types/jobPost.types";
 export default function AdminJobsPage() {
     const [search, setSearch] = useState("");
 
+    const tableTitles = ["Title", "Company", "Category", "Vacation Type", "Last Date", "Views", "Status", "Actions"]
+
     const filteredJobs = useMemo(() => {
         return fakeJobs.filter((job) =>
             `${job.title} ${job.companyName} ${job.categoryName} ${job.vacationTypeName}`
@@ -46,39 +48,13 @@ export default function AdminJobsPage() {
 
                 <thead className="bg-gray-50">
                     <tr>
-
-                        <th className="px-6 py-4 text-left text-sm font-semibold">
-                            Title
-                        </th>
-
-                        <th className="px-6 py-4 text-left text-sm font-semibold">
-                            Company
-                        </th>
-
-                        <th className="px-6 py-4 text-left text-sm font-semibold">
-                            Category
-                        </th>
-
-                        <th className="px-6 py-4 text-left text-sm font-semibold">
-                            Vacation Type
-                        </th>
-
-                        <th className="px-6 py-4 text-left text-sm font-semibold">
-                            Last Date
-                        </th>
-
-                        <th className="px-6 py-4 text-center text-sm font-semibold">
-                            Views
-                        </th>
-
-                        <th className="px-6 py-4 text-center text-sm font-semibold">
-                            Status
-                        </th>
-
-                        <th className="px-6 py-4 text-center text-sm font-semibold">
-                            Actions
-                        </th>
-
+                        {
+                            tableTitles.map((title, i) => (
+                                <th key={i} className="px-6 py-4 text-left text-sm font-semibold">
+                                    {title}
+                                </th>
+                            ))
+                        }
                     </tr>
                 </thead>
 
