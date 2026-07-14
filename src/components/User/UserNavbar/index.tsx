@@ -24,9 +24,7 @@ export default function UserNavbar() {
   return (
     <div className="bg-[var(--primary-bg)]">
       <div className="max-w-[var(--site-width)] mx-auto px-3 py-3 flex justify-between items-center">
-        {/* Sol tərəf */}
         <div className="flex items-center gap-4">
-          {/* Hamburger */}
           <button
             className="md:hidden text-2xl"
             onClick={() => setIsOpen(!isOpen)}
@@ -34,14 +32,12 @@ export default function UserNavbar() {
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
 
-          {/* Logo */}
           <NavLink to="/">
             <span className="font-bold text-xl text-[var(--primary-color)]">
               Istapio
             </span>
           </NavLink>
 
-          {/* Desktop Links */}
           <nav className="hidden md:flex gap-3">
             {links.map((link) => (
               <NavLink
@@ -59,7 +55,6 @@ export default function UserNavbar() {
           </nav>
         </div>
 
-        {/* Sağ tərəf */}
         <div className="flex items-center gap-3">
           <NavLink to="/login">
             <button className="hover:bg-gray-100 rounded-lg py-1 px-3 text-sm transition-all duration-300">
@@ -75,7 +70,6 @@ export default function UserNavbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden border-t bg-[var(--primary-bg)]">
           <nav className="flex flex-col px-4 py-3">
