@@ -1,4 +1,4 @@
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import { FiEdit2, FiInfo, FiTrash2 } from "react-icons/fi";
 
 interface TableActionsProps<T> {
     item: T;
@@ -13,6 +13,13 @@ export default function TableActions<T>({
 }: TableActionsProps<T>) {
     return (
         <div className="flex items-center justify-center gap-2">
+
+            <button
+                // onClick={() => onEdit(item)}
+                className="rounded-lg border border-blue-200 p-2 text-blue-600 hover:bg-blue-50 transition"
+            >
+                <FiInfo size={16} />
+            </button>
 
             <button
                 onClick={() => onEdit(item)}
