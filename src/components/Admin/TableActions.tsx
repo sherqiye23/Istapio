@@ -4,19 +4,21 @@ interface TableActionsProps<T> {
     item: T;
     onEdit: (item: T) => void;
     onDelete: (item: T) => void;
+    onInfo?: (item: T) => void;
 }
 
 export default function TableActions<T>({
     item,
     onEdit,
     onDelete,
+    onInfo
 }: TableActionsProps<T>) {
     return (
         <div className="flex items-center justify-center gap-2">
 
             <button
-                // onClick={() => onEdit(item)}
-                className="rounded-lg border border-blue-200 p-2 text-blue-600 hover:bg-blue-50 transition"
+                onClick={() => onInfo ? onInfo(item) : onEdit(item)}
+                className={`${onInfo ? 'rounded-lg border border-blue-200 p-2 text-blue-600 hover:bg-blue-50 transition' : 'hidden'}`}
             >
                 <FiInfo size={16} />
             </button>
