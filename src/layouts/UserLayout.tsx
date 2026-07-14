@@ -7,7 +7,9 @@ export default function UserLayout() {
         <>
             <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
                 <UserNavbar />
-                <Outlet />
+                <main className="px-4 py-8">
+                    <Outlet />
+                </main>
                 <UserFooter />
             </div>
         </>
